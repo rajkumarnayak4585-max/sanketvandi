@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>संकेतवाणी | Sign Language Learning</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7ff;
+  color: #202746;
+  line-height: 1.6;
+}
+
+header {
+  background: #18265c;
+  color: white;
+  padding: 17px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.logo span { color: #69e6d0; }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover { color: #69e6d0; }
+
+.hero {
+  padding: 75px 7%;
+  background: linear-gradient(120deg, #18265c, #4258b9);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.hero-content { flex: 1; min-width: 270px; }
+
+.hero h1 {
+  font-size: clamp(34px, 5vw, 55px);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero h1 span { color: #69e6d0; }
+
+.hero p {
+  color: #e1e7ff;
+  max-width: 540px;
+  margin-bottom: 25px;
+}
+
+.hero-art {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+  font-size: 120px;
+  background: #ffffff16;
+  border: 1px solid #ffffff30;
+  border-radius: 30px;
+  padding: 35px 15px;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: #69e6d0;
+  color: #17234f;
+  padding: 13px 23px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+section { padding: 60px 7%; }
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #68708b;
+  margin-bottom: 30px;
+}
+
+.features, .alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 17px;
+}
+
+.feature, .letter-card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px #18265c0b;
+  border: 1px solid #e7eaff;
+}
+
+.feature-icon { font-size: 38px; }
+
+.feature h3 { margin: 8px 0; }
+
+.letters { background: #edf0ff; }
+
+.letter-card {
+  cursor: pointer;
+  transition: .2s;
+}
+
+.letter-card:hover {
+  border-color: #4258b9;
+  transform: translateY(-4px);
+}
+
+.letter-card strong {
+  display: block;
+  color: #344bb0;
+  font-size: 38px;
+}
+
+.letter-card small { color: #68708b; }
+
+.note {
+  max-width: 850px;
+  margin: 25px auto 0;
+  background: #fff6da;
+  border-radius: 12px;
+  padding: 16px;
+  color: #654c0a;
+}
+
+.practice-box {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 8px 30px #18265c10;
+}
+
+.practice-emoji { font-size: 65px; margin: 10px; }
+
+#practiceResult { margin: 15px 0; color: #4258b9; }
+
+.quiz {
+  max-width: 650px;
+  margin: auto;
+  padding: 28px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 8px 30px #18265c10;
+}
+
+.quiz button.option {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  background: #f0f2ff;
+  border: 1px solid #dfe3ff;
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quiz button.option:hover { background: #dfe5ff; }
+
+#quizFeedback {
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+.about {
+  background: #18265c;
+  color: white;
+  text-align: center;
+}
+
+.about p {
+  max-width: 750px;
+  margin: 12px auto;
+  color: #e1e7ff;
+}
+
+footer {
+  background: #111a40;
+  color: white;
+  text-align: center;
+  padding: 22px 10px;
+}
+
+footer span { color: #69e6d0; }
+
+@media (max-width: 600px) {
+  header { justify-content: center; }
+  nav { justify-content: center; gap: 12px; }
+  .hero { padding: 50px 6%; }
+  section { padding: 45px 5%; }
+  .section-title { font-size: 27px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🤟 संकेत<span>वाणी</span></div>
+  <nav>
+    <a href="#home">होम</a>
+    <a href="#learn">सीखें</a>
+    <a href="#practice">अभ्यास</a>
+    <a href="#quiz">क्विज़</a>
+    <a href="#about">हमारे बारे में</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>बिना शब्दों के भी<br><span>बात करना सीखें!</span></h1>
+    <p>
+      संकेत भाषा हाथों, चेहरे के भाव और शरीर की गतिविधियों से
+      संवाद करने का एक तरीका है। आइए, एक-दूसरे को समझना सीखें।
+    </p>
+    <a class="btn" href="#learn">सीखना शुरू करें →</a>
+  </div>
+  <div class="hero-art" aria-label="हाथ से संकेत">
+    🤟 🫶 👋
+    <p style="font-size:18px;color:#dfe7ff">हर संकेत एक नई बातचीत</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">संकेत भाषा क्यों सीखें?</h2>
+  <p class="section-subtitle">सीखें, समझें और सबके साथ जुड़ें।</p>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">🤝</div>
+      <h3>संचार</h3>
+      <p>अलग-अलग तरीकों से संवाद करना सीखें।</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💙</div>
+      <h3>समावेश</h3>
+      <p>बधिर लोगों के साथ संवाद के अवसर बढ़ाएँ।</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🧠</div>
+      <h3>नई कला</h3>
+      <p>नई भाषा और अभिव्यक्ति के बारे में जानें।</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌍</div>
+      <h3>समानता</h3>
+      <p>हर व्यक्ति का सम्मान करना सीखें।</p>
+    </div>
+  </div>
+</section>
+
+<section class="letters" id="learn">
+  <h2 class="section-title">अंग्रेज़ी अक्षर A–Z</h2>
+  <p class="section-subtitle">
+    अक्षर चुनें और उसका नाम सुनें।
+  </p>
+
+  <div class="alphabet-grid" id="alphabet"></div>
+
+  <div class="note">
+    <strong>महत्वपूर्ण:</strong> ये कार्ड अंग्रेज़ी अक्षरों के नाम
+    और उच्चारण सीखने के लिए हैं, वास्तविक हाथ के संकेतों की तस्वीरें
+    नहीं। भारतीय सांकेतिक भाषा (ISL) के सही संकेत सीखने के लिए
+    प्रशिक्षक या विश्वसनीय ISL शिक्षण सामग्री का उपयोग करें।
+  </div>
+</section>
+
+<section id="practice">
+  <h2 class="section-title">अभ्यास करें</h2>
+  <p class="section-subtitle">अक्षर चुनें और उसका उच्चारण सुनें।</p>
+
+  <div class="practice-box">
+    <div class="practice-emoji">🖐️</div>
+    <h3 id="practiceLetter">A</h3>
+    <p id="practiceText">यह अंग्रेज़ी वर्णमाला का पहला अक्षर है।</p>
+    <div id="practiceResult">शुरू करने के लिए बटन दबाएँ।</div>
+    <button class="btn" onclick="nextLetter()">अगला अक्षर →</button>
+    <button class="btn" onclick="speakLetter()" style="margin:5px">
+      🔊 सुनें
+    </button>
+  </div>
+</section>
+
+<section class="letters" id="quiz">
+  <h2 class="section-title">ज्ञान की परीक्षा 🧠</h2>
+  <p class="section-subtitle">देखें आपने कितना सीखा!</p>
+
+  <div class="quiz">
+    <h3 id="question">संकेत भाषा का उपयोग किसलिए किया जाता है?</h3>
+    <div id="options"></div>
+    <p id="quizFeedback" aria-live="polite"></p>
+    <p id="score" style="margin-top:10px">स्कोर: 0</p>
+    <button class="btn" id="nextQuestion" onclick="nextQuiz()" style="margin-top:15px">
+      अगला प्रश्न →
+    </button>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2 class="section-title">हमारे बारे में</h2>
+  <p>
+    संकेतवाणी एक शैक्षिक वेबसाइट परियोजना है, जिसका उद्देश्य
+    संकेत भाषा के प्रति जागरूकता बढ़ाना और सभी के लिए
+    संवाद को आसान बनाने के बारे में सीखना है।
+  </p>
+  <p><strong>विद्यार्थी:</strong> Raj Kumar Nayak</p>
+  <p><strong>कक्षा:</strong> 9th</p>
+  <p>सीखें • समझें • सम्मान करें</p>
+</section>
+</main>
+
+<footer>
+  <p>© 2026 <span>संकेतवाणी</span> | Student Project by Raj Kumar Nayak, Class 9th</p>
+</footer>
+
+<script>
+const alphabet = document.getElementById("alphabet");
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let currentLetter = 0;
+
+// Alphabet learning cards
+letters.forEach(letter => {
+  const card = document.createElement("button");
+  card.className = "letter-card";
+  card.type = "button";
+  card.innerHTML = `<strong>${letter}</strong><small>अक्षर सुनें 🔊</small>`;
+  card.setAttribute("aria-label", `अक्षर ${letter} सुनें`);
+  card.onclick = () => {
+    currentLetter = letters.indexOf(letter);
+    updatePractice();
+    speakLetter();
+  };
+  alphabet.appendChild(card);
+});
+
+function updatePractice() {
+  const letter = letters[currentLetter];
+  document.getElementById("practiceLetter").textContent = letter;
+  document.getElementById("practiceText").textContent =
+    `अंग्रेज़ी वर्णमाला का अक्षर ${letter}`;
+  document.getElementById("practiceResult").textContent =
+    `आपने अक्षर ${letter} चुना है।`;
+}
+
+function nextLetter() {
+  currentLetter = (currentLetter + 1) % letters.length;
+  updatePractice();
+}
+
+function speakLetter() {
+  if (!("speechSynthesis" in window)) {
+    document.getElementById("practiceResult").textContent =
+      "इस ब्राउज़र में आवाज़ की सुविधा उपलब्ध नहीं है।";
+    return;
+  }
+  speechSynthesis.cancel();
+  const message = new SpeechSynthesisUtterance(
+    `Letter ${letters[currentLetter]}`
+  );
+  message.lang = "en-US";
+  speechSynthesis.speak(message);
+}
+
+// Quiz
+const questions = [
+  {
+    q: "संकेत भाषा का उपयोग किसलिए किया जाता है?",
+    options: ["संवाद के लिए", "खाना बनाने के लिए", "दौड़ने के लिए"],
+    answer: 0
+  },
+  {
+    q: "संकेत भाषा में क्या महत्वपूर्ण हो सकता है?",
+    options: ["हाथ और चेहरे के भाव", "केवल जूते", "केवल रंग"],
+    answer: 0
+  },
+  {
+    q: "ISL का पूरा नाम क्या है?",
+    options: [
+      "Indian Sign Language",
+      "International Sound List",
+      "Indian School Lesson"
+    ],
+    answer: 0
+  },
+  {
+    q: "संकेत भाषा सीखते समय क्या करना चाहिए?",
+    options: [
+      "सही संकेतों का अभ्यास",
+      "संकेतों का अनुमान लगाना",
+      "सीखना बंद कर देना"
+    ],
+    answer: 0
+  },
+  {
+    q: "क्या सभी सांकेतिक भाषाएँ एक जैसी होती हैं?",
+    options: ["हाँ, हमेशा", "नहीं, वे अलग हो सकती हैं", "पता नहीं"],
+    answer: 1
+  }
+];
+
+let quizIndex = 0;
+let score = 0;
+let answered = false;
+
+function showQuiz() {
+  answered = false;
+  const item = questions[quizIndex];
+  document.getElementById("question").textContent =
+    `प्रश्न ${quizIndex + 1}: ${item.q}`;
+  document.getElementById("quizFeedback").textContent = "";
+  document.getElementById("nextQuestion").textContent =
+    quizIndex === questions.length - 1 ? "फिर से शुरू करें ↻" : "अगला प्रश्न →";
+
+  const options = document.getElementById("options");
+  options.innerHTML = "";
+
+  item.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.className = "option";
+    button.textContent = option;
+    button.onclick = () => checkAnswer(index, button);
+    options.appendChild(button);
+  });
+}
+
+function checkAnswer(index, button) {
+  if (answered) return;
+  answered = true;
+
+  if (index === questions[quizIndex].answer) {
+    score++;
+    document.getElementById("quizFeedback").textContent =
+      "✅ सही जवाब! बहुत अच्छा!";
+  } else {
+    document.getElementById("quizFeedback").textContent =
+      "❌ सही जवाब: " + questions[quizIndex].options[questions[quizIndex].answer];
+  }
+
+  document.getElementById("score").textContent = `स्कोर: ${score}`;
+  document.querySelectorAll(".option").forEach(b => b.disabled = true);
+}
+
+function nextQuiz() {
+  if (quizIndex < questions.length - 1) {
+    quizIndex++;
+  } else
